@@ -1,0 +1,1481 @@
+
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+
+	<!-- MODULE:1 LOGIN MODULE -->
+
+	<!-- Mapping:1 Form to show the login page with required contents -->
+
+	<definition name="showWelcomePage"
+		template="/WEB-INF/view/loginLayout/welcomePage.jsp">
+	</definition>
+
+	<definition name="showLoginPage"
+		template="/WEB-INF/view/loginLayout/loginLayout.jsp">
+		<put-attribute name="title" value="Login | Monitoring Tool" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/loginLayout/header.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/loginPage.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/loginLayout/footer.jsp" />
+	</definition>
+
+	<!-- Mapping:2 Form to change the password if its first login after the 
+		registration -->
+	<definition name="Firstlogin" extends="showLoginPage">
+		<put-attribute name="title"
+			value="Change Password| Monitoring Tool" />
+		<put-attribute name="banner"
+			value="/WEB-INF/view/loginLayout/header.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/firstLogin.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/loginLayout/footer.jsp" />
+	</definition>
+
+	<!-- Mapping:3 Form to recover the password if in case user forgot his password -->
+	<definition name="passwordrecovery"
+		template="/WEB-INF/view/loginLayout/loginLayout.jsp">
+		<put-attribute name="title" value="Login | Monitoring Tool" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/loginLayout/header.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/passwordRecovery.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/loginLayout/footer.jsp" />
+	</definition>
+
+
+	<!-- <definition name="passwordrecovery" extends="showLoginPage"> <put-attribute 
+		name="title" value="Password Recovery | Monitoring Tool" /> <put-attribute name="content" 
+		value="/WEB-INF/view/loginModule/passwordRecovery.jsp" /> </definition> -->
+
+	<!-- Mapping:4 Form to show the errors if they occur while recovering the 
+		password -->
+	<definition name="Passwordrecoveryerrorpage"
+		extends="showLoginPage">
+		<put-attribute name="title" value="Login | Monitoring Tool" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/loginLayout/header.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/error.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/loginLayout/footer.jsp" />
+	</definition>
+
+	<!-- Mapping:4 Form to reset the password if in case password has been expired -->
+	<definition name="passwordExpired" extends="showLoginPage">
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/passwordResetPage.jsp" />
+	</definition>
+
+	<!-- Mapping:4 Form to reset the password if in case password has been expired -->
+	<definition name="otpverficationPage"
+		extends="showLoginPage">
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/otpVerificationPage.jsp" />
+	</definition>
+
+	<definition name="otpvarification" extends="showLoginPage">
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/otpVerificationPage.jsp" />
+	</definition>
+
+	<!-- Mapping:5 Form to change the password for the users who logged in to 
+		system -->
+	<definition name="changePassword" extends="home.definition">
+		<put-attribute name="title"
+			value="Change Password| Monitoring Tool" />
+		<put-attribute name="banner"
+			value="/WEB-INF/view/homeLayout/banner.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/homeLayout/header.jsp" />
+		<put-attribute name="leftsidebar"
+			value="/WEB-INF/view/homeLayout/leftsidebar.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/homeLayout/footer.jsp" />
+	</definition>
+
+	<definition name="changepassword" extends="changePassword">
+		<put-attribute name="title"
+			value="Change Password| Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/changePassword.jsp" />
+	</definition>
+
+	<definition name="policeChangePassword"
+		extends="changePassword">
+		<put-attribute name="title"
+			value="Change Password| Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/changePassword.jsp" />
+	</definition>
+
+	<definition name="courtChangePassword"
+		extends="changePassword">
+		<put-attribute name="title"
+			value="Change Password | Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/changePassword.jsp" />
+	</definition>
+
+
+	<definition name="cctnsdashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/cctnsdashboard.jsp" />
+	</definition>
+	<definition name="fslDashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/fsldashboard.jsp" />
+	</definition>
+
+	<definition name="eprosecutiondashboard"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/eprosecutiondashboard.jsp" />
+	</definition>
+
+	<definition name="usersearchlogboard"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/usersearchlogboard.jsp" />
+	</definition>
+
+
+	<definition name="prisonChangePassword"
+		extends="changePassword">
+		<put-attribute name="title" value="Change Password" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/loginModule/changePassword.jsp" />
+	</definition>
+	<!--END OF LOGIN MODULE -->
+
+
+	<!-- MODULE:2 REGISTRATION MODULE -->
+	<definition name="Registration"
+		template="/WEB-INF/view/appRegistration/regLayout.jsp">
+		<put-attribute name="title" value="Registration | Monitoring Tool" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/appRegistration/header.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appRegistration/content.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/appRegistration/footer.jsp" />
+	</definition>
+
+	<definition name="UserRegForm" extends="Registration">
+		<put-attribute name="content"
+			value="/WEB-INF/view/appRegistration/Regpage.jsp" />
+	</definition>
+
+	<definition name="UserRegSuccess" extends="Registration">
+		<put-attribute name="title"
+			value="User Registration Done| Monitoring Tool" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/loginLayout/header.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appRegistration/RegSuccess.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/loginLayout/footer.jsp" />
+	</definition>
+
+	<!-- END OF REGISTRATION MODULE -->
+	<definition name="regmhauser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Register User" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appRegistration/regmhauser.jsp" />
+	</definition>
+	<definition name="regpillaruser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Register User" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appRegistration/regpillaruser.jsp" />
+	</definition>
+	<definition name="regstateuser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Register User" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appRegistration/regstateuser.jsp" />
+	</definition>
+	<definition name="regdistrictuser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Register User" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appRegistration/regdistrictuser.jsp" />
+	</definition>
+	<!--START Module Mapping Separation -->
+	
+	<definition name="mapmhauser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Module Map" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/moduleMapping/regmhauser.jsp" />
+	</definition>
+	<definition name="mappillaruser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Module Map" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/moduleMapping/regpillaruser.jsp" />
+	</definition>
+	<definition name="mapstateuser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Module Map" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/moduleMapping/regstateuser.jsp" />
+	</definition>
+	<definition name="mapdistrictuser" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool| Module Map" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/moduleMapping/regdistrictuser.jsp" />
+	</definition>
+	
+	<!-- Module Mapping Separation END -->
+	
+	<!-- MODULE:3 HOME MODULE -->
+	<!-- Mapping:1 Forms to design overall layout of the system -->
+	<definition name="home.definition"
+		template="/WEB-INF/view/homeLayout/layout.jsp">
+		<put-attribute name="title"
+			value="Monitoring Tool" />
+		<put-attribute name="banner"
+			value="/WEB-INF/view/homeLayout/banner.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/homeLayout/header.jsp" />
+		<put-attribute name="leftsidebar"
+			value="/WEB-INF/view/homeLayout/leftsidebar.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/homeLayout/content.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/homeLayout/footer.jsp" />
+	</definition>
+
+	<!-- Mapping:2 Form to show all the indexes of the system -->
+	<definition name="showHomePage" extends="home.definition">
+		<put-attribute name="title" value="Home|Monitoring Tool" />
+		<put-attribute name="leftsidebar"
+			value="/WEB-INF/view/homeLayout/leftsidebar.jsp" />
+	</definition>
+	<!-- END OF HOME MODULE -->
+
+
+	<!-- for log history -->
+	<definition name="userloginhistory"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|User Login History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/userloginhistory.jsp" />
+	</definition>
+
+	<definition name="userdetail" extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|User Login History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/userlogindetail.jsp" />
+	</definition>
+
+	<definition name="allUsers" extends="list.definition">
+		<put-attribute name="title" value="Users List" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/userList.jsp" />
+	</definition>
+
+<definition name="pillarusersreport" extends="list.definition">
+		<put-attribute name="title" value="Users List" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/pillarusersreport.jsp" />
+	</definition>
+	<definition name="stateusersreport" extends="list.definition">
+		<put-attribute name="title" value="Users List" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/stateusersreport.jsp" />
+	</definition>
+	<definition name="userDetails" extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|User Login History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/userDetails.jsp" />
+	</definition>
+
+
+	<definition name="stateUsersLastLogin"
+		extends="list.definition">
+		<put-attribute name="title" value="User's Login History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/stateUsersLastLogin.jsp" />
+	</definition>
+
+	<definition name="mhaUsersLastLogin"
+		extends="list.definition">
+		<put-attribute name="title" value="User's Login History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/mhaUsersLastLogin.jsp" />
+	</definition>
+
+	<definition name="districtUsersLastLogin"
+		extends="list.definition">
+		<put-attribute name="title" value="User's Login History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/districtUsersLastLogin.jsp" />
+	</definition>
+
+
+
+	<definition name="usersLastLoginWorkUnderProcess"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|User Login History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/usersLastLoginWorkUnderProcess.jsp" />
+	</definition>
+
+	<definition name="cjsDataSearch" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/CJS/cjsDataSearch.jsp" />
+	</definition>
+	<definition name="cjsService" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/CJS/cjsService.jsp" />
+	</definition>
+
+	<!-- MODULE:4 START OF QUERY PROCESSING -->
+	<!-- Mapping:1 Forms to design layout of the query applications -->
+	<definition name="app.definition"
+		template="/WEB-INF/view/appProcess/layout.jsp">
+		<put-attribute name="title"
+			value="Integrated Criminal Justice System|Monitoring Tool" />
+		<put-attribute name="banner"
+			value="/WEB-INF/view/homeLayout/banner.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/homeLayout/header.jsp" />
+		<put-attribute name="leftsidebar"
+			value="/WEB-INF/view/homeLayout/leftsidebar.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/homeLayout/content.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/homeLayout/footer.jsp" />
+	</definition>
+
+	<definition name="globalNamedQueryPolice"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryForm.jsp" />
+	</definition>
+
+	<definition name="globalNamedQueryCourt"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryForm.jsp" />
+	</definition>
+
+	<definition name="globalNamedQueryPrison"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryForm.jsp" />
+	</definition>
+
+	<!-- Monitoring Tool DB QUERY -->
+	<definition name="showIcjsQueryForm"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/icjsQueryForm.jsp" />
+	</definition>
+
+
+	<definition name="ShowQueryResult" extends="app.definition">
+		<put-attribute name="title" value="QueryResult|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryResultTabbed.jsp" />
+	</definition>
+
+	<definition name="ShowPoliceDDLevel1"
+		extends="app.definition">
+		<put-attribute name="title" value="PoliceInfo|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/policeDDLevel1.jsp" />
+	</definition>
+
+	<!-- Monitoring Tool DB RESULT -->
+	<definition name="ShowICJSQueryResult"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/icjsQueryResultTabbed.jsp" />
+	</definition>
+
+	<definition name="localNamedQueryPolice"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryPoliceForm.jsp" />
+	</definition>
+
+	<definition name="localNamedQueryPrison"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryPrisonForm.jsp" />
+	</definition>
+
+	<definition name="localNamedQueryCourt"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryCourtForm.jsp" />
+	</definition>
+
+	<!-- <definition name="localNamedQuery" extends="app.definition"> <put-attribute 
+		name="title" value="Query|Monitoring Tool" /> <put-attribute name="content" value="/WEB-INF/view/appProcess/namedQueryResultTabbed.jsp" 
+		/> </definition> -->
+
+
+	<definition name="ShowQueryResultPrison"
+		extends="app.definition">
+		<put-attribute name="title" value="QueryResult|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryResultPrison.jsp" />
+	</definition>
+
+	<definition name="ShowQueryResultPolice"
+		extends="app.definition">
+		<put-attribute name="title" value="QueryResult|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/namedQueryResultPolice.jsp" />
+	</definition>
+	<!-- End of app Module -->
+
+	<!-- MODULE:5 Approval of various lists -->
+	<!-- Mapping:1 Forms to design layout of the lists -->
+	<definition name="list.definition"
+		template="/WEB-INF/view/userApproval/listLayout.jsp">
+		<put-attribute name="title"
+			value="Integrated Criminal Justice System|Monitoring Tool" />
+		<put-attribute name="banner"
+			value="/WEB-INF/view/homeLayout/banner.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/homeLayout/header.jsp" />
+		<put-attribute name="leftsidebar"
+			value="/WEB-INF/view/homeLayout/leftsidebar.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/homeLayout/content.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/homeLayout/footer.jsp" />
+	</definition>
+
+	<!-- Mapping:2 Form to approve the user lists -->
+	<definition name="UserList" extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|User Approval List" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/UserListDisplay.jsp" />
+	</definition>
+	<!-- End of lists Module -->
+
+	<!-- MODULE:6 List OF ALL MASTERS -->
+	<!-- Mapping:1 Forms to design layout of the masters -->
+	<definition name="master.definition"
+		template="/WEB-INF/view/appMaster/layout.jsp">
+		<put-attribute name="title"
+			value="Integrated Criminal Justice System|Monitoring Tool" />
+		<put-attribute name="banner"
+			value="/WEB-INF/view/homeLayout/banner.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/view/homeLayout/header.jsp" />
+		<put-attribute name="leftsidebar"
+			value="/WEB-INF/view/homeLayout/leftsidebar.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/homeLayout/content.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/homeLayout/footer.jsp" />
+	</definition>
+
+	<!-- Mapping:1 To load the pillar form -->
+	<definition name="pillar" extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Pillar Master" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/pillar/pillarForm.jsp" />
+	</definition>
+
+	<!-- Mapping:2 To load the pillar office form -->
+	<definition name="pillarOffice" extends="master.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|Pillar Office Master" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/office/PillarOfficeDetails.jsp" />
+	</definition>
+
+	<!-- Mapping:3 To load the menu form -->
+	<definition name="menuDetails" extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Menu Master" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/menu/MenuUser.jsp" />
+	</definition>
+
+	<!-- Mapping:4 To load the sub menu form -->
+	<definition name="subMenuDetails"
+		extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Sub Menu" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/menu/SubMenu.jsp" />
+	</definition>
+
+	<!-- Mapping:5 To load the user role form -->
+	<definition name="roleDetails" extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Role Details" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/user/RoleForm.jsp" />
+	</definition>
+
+
+	<!-- Mapping:5 To load the user sub menu assignment form -->
+	<definition name="assignMenu" extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Assign Menu" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/user/AssignMenu.jsp" />
+	</definition>
+
+	<!-- Mapping:6 To load the user role assignment form -->
+	<definition name="assignRole" extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Assign Role" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/user/AssignRole.jsp" />
+	</definition>
+
+	<!-- Mapping:6 To load the user service assignment form -->
+	<definition name="servicesMapping"
+		extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Assign Services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/user/assignServices.jsp" />
+	</definition>
+
+<definition name="servicesMappingMha"
+		extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Assign Services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/user/assignServicesMha.jsp" />
+	</definition>
+
+	<!-- Mapping:4 To load the sub menu form -->
+	<definition name="listSubMenuDetails"
+		extends="master.definition">
+		<put-attribute name="title" value="Monitoring Tool|Sub Menu" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/menu/ListSubMenu.jsp" />
+	</definition>
+
+	<definition name="updateProfile" extends="home.definition">
+		<put-attribute name="title" value="Monitoring Tool|Update Profile" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/userApp/updateProfile.jsp" />
+	</definition>
+	<!--MODULE:6 Error Module -->
+	<definition name="genericerror"
+		template="/WEB-INF/view/error/error.jsp">
+
+	</definition>
+
+	<definition name="databaseerror"
+		template="/WEB-INF/view/error/sqlerror.jsp">
+
+	</definition>
+
+	<definition name="sessionexpired"
+		template="/WEB-INF/view/error/errorSessionExpired.jsp">
+
+	</definition>
+	<definition name="sessionTimeOut"
+		template="/WEB-INF/view/error/errorSessionExpired.jsp">
+
+	</definition>
+
+	<definition name="invalidurl"
+		template="/WEB-INF/view/error/validurl.jsp">
+
+	</definition>
+	<!-- CROSS QUERY DB RESULT -->
+	<definition name="identityResolutionOfPolice"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/identityResolutionOfPolice.jsp" />
+	</definition>
+	<definition name="identityResolutionOfCourt"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/identityResolutionOfCourt.jsp" />
+	</definition>
+
+	<definition name="identityResolutionOfPrison"
+		extends="app.definition">
+		<put-attribute name="title" value="Query|Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appProcess/identityResolutionOfPrison.jsp" />
+	</definition>
+	<!-- <definition name="identityResolution" template="/WEB-INF/view/appProcess/identityResolution.jsp"> 
+		</definition> -->
+	<!-- End of Error Module -->
+	<!-- SEARCH APPLICATION TILES MAPPING (OTSI) -->
+
+	<!-- <definition name="mainpage" template="/WEB-INF/jsp/mainpage.jsp"> </definition> -->
+
+	<definition name="mainpage" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/mainpage.jsp" />
+	</definition>
+
+	<definition name="courtsearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtsearch.jsp" />
+	</definition>
+	
+	<!-- Start Court Search Dashboard Added On 30th Jan 2019  Rajendra Singh-->	
+	<definition name="courtsearchdashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtsearchdashboard.jsp" />
+	</definition>
+	<!--End Court Search Dashboard Added On 30th Jan 2019  Rajendra Singh  -->
+
+
+
+  <!-- Start Court Search Result Dashboard Start On 05th Feb 2019   -->   
+	<definition name="courtsearchresultsdashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtsearchresultsdashboard.jsp" />
+	</definition>
+  <!--End Court Search Dashboard Added On 05th Feb 2019  Rajendra Singh  -->
+
+	<definition name="courtcasemonitorsearchresult"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtcasemonitorsearchresult.jsp" />
+	</definition>
+
+	<definition name="courtcasemonitorsearch"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtcasemonitorsearch.jsp" />
+	</definition>
+
+	<definition name="courtdashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtdashboard.jsp" />
+	</definition>
+
+	<definition name="courtsearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtsearchresults.jsp" />
+	</definition>
+
+	<definition name="missingsearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/missingsearch.jsp" />
+	</definition>
+	<definition name="missingsearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/missingsearchresults.jsp" />
+	</definition>
+
+	<definition name="niasearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/niasearch.jsp" />
+	</definition>
+
+
+	<definition name="niasearchresults" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/niasearchresults.jsp" />
+	</definition>
+
+	<definition name="firdashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/firdashboard.jsp" />
+	</definition>
+
+	<definition name="crimesdashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/crimesdashboard.jsp" />
+	</definition>
+
+	<definition name="prisondashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prisondashboard.jsp" />
+	</definition>
+
+	<definition name="wcddashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/wcdashboard.jsp" />
+	</definition>
+	
+	<definition name="alisdashboard" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/alisdashboard.jsp" />
+	</definition>
+	
+	<definition name="searchusers" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/searchusers.jsp" />
+	</definition>
+
+	<definition name="policesearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/policesearch.jsp" />
+	</definition>
+	<definition name="policesearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/policesearchresults.jsp" />
+	</definition>
+
+	<definition name="policecasemonitorsearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/policecasemonitorsearchresults.jsp" />
+	</definition>
+
+	<definition name="policecasemonitorsearch"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/policecasemonitorsearch.jsp" />
+	</definition>
+
+
+
+	<definition name="vehiclesearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/vehiclesearch.jsp" />
+	</definition>
+	<definition name="vehiclesearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/vehiclesearchresults.jsp" />
+	</definition>
+	<definition name="prisonsearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prisonsearch.jsp" />
+	</definition>
+	
+	<!--  Added By Rajendra On 25th Jan 2019 -->
+	<definition name="prisonersearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prisonersearch.jsp" />
+	</definition>
+	
+	<definition name="prisonsearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prisonsearchresults.jsp" />
+	</definition>
+	
+	<!--  Added By Rajendra On 28th Jan 2019 -->
+	<definition name="prisonersearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prisonersearchresults.jsp" />
+	</definition>
+	
+	<definition name="crimesearchresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/crimesearchresults.jsp" />
+	</definition>
+
+	<definition name="courtcommonresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Court Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtcommonresults.jsp" />
+	</definition>
+
+	<definition name="vehiclecommonresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Vechile Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/vehiclecommonresults.jsp" />
+	</definition>
+
+	<definition name="policecommonresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Police Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/policecommonresults.jsp" />
+	</definition>
+	<definition name="prisoncommonresults"
+		extends="app.definition">
+		<put-attribute name="title" value="Prison Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prisoncommonresults.jsp" />
+	</definition>
+
+	<definition name="compareresults" extends="app.definition">
+		<put-attribute name="title" value="Compare" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/compareresults.jsp" />
+	</definition>
+
+	<definition name="settings" extends="app.definition">
+		<put-attribute name="title" value="Setting" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/settings.jsp" />
+	</definition>
+
+	<!-- feedback report by manoj -->
+
+	<definition name="feedbackreport" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | Feedback" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/feedbackreport.jsp" />
+	</definition>
+
+	<!-- crimereport report -->
+
+	<definition name="crimereport" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | Crime Report" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/crimereport.jsp" />
+	</definition>
+
+	<!-- update status by Prabhat -->
+
+	<definition name="updateStatus" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | Update Status" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/updateStatus.jsp" />
+	</definition>
+
+	<definition name="assignDashbaord"
+		extends="master.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|Assign Dashboard" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/user/assignDashboard.jsp" />
+	</definition>
+
+	<definition name="createDashboard"
+		extends="master.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|Create Dashboard" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/user/createDashboard.jsp" />
+	</definition>
+
+	<!-- update status by Prabhat -->
+
+	<!-- update starts by Purnima -->
+
+	<definition name="epolice" extends="app.definition">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/epolice.jsp" />
+	</definition>
+
+	<definition name="courtsearchforwebservices"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/courtDataFromWebServices.jsp" />
+	</definition>
+
+	<definition name="eprison" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/eprison.jsp" />
+	</definition>
+
+	<definition name="ecourt" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/ecourt.jsp" />
+	</definition>
+
+	<definition name="interoperationForProsecution"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prosecution.jsp" />
+	</definition>
+
+	<definition name="interoperationForFSL"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/fsl.jsp" />
+	</definition>
+
+	<definition name="prosecutionsearchforwebservices"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/prisonDataFromWebServices.jsp" />
+	</definition>
+
+	<definition name="policesearchforwebservices"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/policesearchforwebservices.jsp" />
+	</definition>
+
+	<definition name="menuRoleDescription"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/appMaster/menu/menuRoleDescription.jsp" />
+	</definition>
+
+	<definition name="userActivationDeactivation"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool|Activation/Deactivation History" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userApproval/userActivationDeactivation.jsp" />
+	</definition>
+
+	<definition name="transferUser" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|TransferUser" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/transferUser/transferUser.jsp" />
+	</definition>
+	
+	<definition name="transferStateAppUser" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|TransferUser" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/transferUser/transferStateAppUser.jsp" />
+	</definition>
+
+
+	<definition name="showCaseListPolicee"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/showCaseListPolice.jsp" />
+	</definition>
+
+	<definition name="showCaseListCourt"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/showCaseListCourt.jsp" />
+	</definition>
+
+
+
+
+	<definition name="showCaseListPrison"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/showCaseListPrison.jsp" />
+	</definition>
+
+	<definition name="showPrisonList" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/showPrisonList.jsp" />
+	</definition>
+
+
+	<!-- master mapper -->
+
+	<definition name="mastermapper" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/mapper/mastermapperprison.jsp" />
+	</definition>
+
+	<definition name="mastermappingcourt"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/mapper/mastermappercourt.jsp" />
+	</definition>
+
+	<definition name="search" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/searchResult.jsp" />
+	</definition>
+	<definition name="searchResultOnFirYear"
+		extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/searchResultOnFirYear.jsp" />
+	</definition>
+
+	<definition name="servicess" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/services.jsp" />
+	</definition>
+
+	<!-- service tile entry by Prabhat Singh -->
+
+	<definition name="courtService" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool | services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/CJS/courtService.jsp" />
+	</definition>
+
+	<definition name="prisonService" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/CJS/prisonService.jsp" />
+	</definition>
+
+	<definition name="cctnsService" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/CJS/cctnsService.jsp" />
+	</definition>
+
+	<definition name="misRequesthomepage"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool | services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/MIS/mishome.jsp" />
+	</definition>
+
+
+	<!-- Tiles entry for services by Prabhat Singh -->
+
+	<definition name="causeList" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/causeList.jsp" />
+	</definition>
+
+	<definition name="completeCourtDetailsbyCNR"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/completeCourtDetailsbyCNR.jsp" />
+	</definition>
+
+	<definition name="suretyChecking" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/suretyChecking.jsp" />
+	</definition>
+
+	<definition name="listOfFir" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/listOfFir.jsp" />
+	</definition>
+
+	<definition name="arrestList" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/arrestList.jsp" />
+	</definition>
+
+	<definition name="chargeSheetList" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/chargeSheetList.jsp" />
+	</definition>
+
+	<definition name="firDetailByFirNum"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/firDetailByFirNum.jsp" />
+	</definition>
+
+	<definition name="pisList" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/pisList.jsp" />
+	</definition>
+
+	<definition name="prisonerProducedInCourtCourtWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/prisonerProducedInCourtCourtWise.jsp" />
+	</definition>
+
+
+	<definition name="getCourtProductionServiceByPrison"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/prisonerProducedInCourtCourtWise.jsp" />
+	</definition>
+
+	<definition name="prisonerProducedInCourtJailWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/prisonerProducedInCourtJailWise.jsp" />
+	</definition>
+
+	<definition name="prisonerProducedInCourtJailAndCourtWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/prisonerProducedInCourtJailAndCourtWise.jsp" />
+	</definition>
+
+	<definition name="payroleReleaseJailWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleReleaseJailWise.jsp" />
+	</definition>
+
+	<definition name="payroleOverstayJailWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleOverstayJailWise.jsp" />
+	</definition>
+
+	<definition name="movementListJailWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/movementListJailWise.jsp" />
+	</definition>
+
+	<definition name="payroleRelaseCourtWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleRelaseCourtWise.jsp" />
+	</definition>
+
+	<definition name="payroleOverstayCourtWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleOverstayCourtWise.jsp" />
+	</definition>
+
+	<definition name="movementListCourtWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/movementListCourtWise.jsp" />
+	</definition>
+
+	<definition name="getMovementListCourtWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/movementListCourtWise.jsp" />
+	</definition>
+
+	<definition name="payroleReleasePoilceStationWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleReleasePoilceStationWise.jsp" />
+	</definition>
+
+
+	<definition name="getParoleReleaseListPoliceStationWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleReleasePoilceStationWise.jsp" />
+	</definition>
+
+	<definition name="payroleOverStayPoilceStationWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleOverStayPoilceStationWise.jsp" />
+	</definition>
+
+
+	<definition name="getParoleOverstayListPoliceStationWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/payroleOverStayPoilceStationWise.jsp" />
+	</definition>
+
+	<definition name="movementListPoilceStationWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/movementListPoilceStationWise.jsp" />
+	</definition>
+
+	<definition name="getMovementListPoliceStationWise"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/movementListPoilceStationWise.jsp" />
+	</definition>
+
+
+	<definition name="visitorList" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/visitorList.jsp" />
+	</definition>
+
+	<definition name="getVisitorListByPolice"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/visitorList.jsp" />
+	</definition>
+
+
+
+
+	<definition name="requestCustodyCertificate"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/visitorList.jsp" />
+	</definition>
+
+	<definition name="requestCustodyCertificate"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/services/requestCustodyCertificate.jsp" />
+	</definition>
+
+	<!-- Tiles entry for services by Nimit Chobay -->
+
+
+	<definition name="chargesheetState"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/chargeSheet/chargesheetStates.jsp" />
+	</definition>
+
+	<definition name="chargesheetDistrict"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/chargeSheet/chagresheetDistricts.jsp" />
+	</definition>
+
+	<definition name="chargesheetPoliceStation"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/chargeSheet/chargesheetPS.jsp" />
+	</definition>
+
+	<definition name="chargesheetAjax"
+		template="/WEB-INF/view/chargeSheet/ajaxresponce.jsp">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+	</definition>
+
+	<definition name="CJSprofileAjax"
+		template="/WEB-INF/view/CJS/cjsDataSearch.jsp">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+	</definition>
+
+
+	<definition name="chargesheetStatesDashbord"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/chargeSheet/dashbord/chargesheetStatesDash.jsp" />
+	</definition>
+
+	<definition name="chargesheetDistrictsDashbord"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/chargeSheet/dashbord/chargesheetDistrictsDash.jsp" />
+	</definition>
+
+	<definition name="chargesheetPoliceStationsDashbord"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|CJS" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/chargeSheet/dashbord/chargesheetPSDash.jsp" />
+	</definition>
+
+	<!-- Tiles entry for Visitor Search by Rajendra Singh -->
+
+	<definition name="globalVisitorSearch"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool | Visitor Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/visitorsearch/globalVisitorSearch.jsp" />
+	</definition>
+
+	<definition name="visitorsearchresult"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool | Visitor Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/visitorsearch/visitorsearchresult.jsp" />
+	</definition>
+	
+	<!-- tiles Entry For Alis -->
+	<definition name="alissearch"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool | ALIS Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/alis/alissearch.jsp" />
+	</definition>
+	
+	<definition name="alisSearchResult"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool | ALIS Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/alis/alisSearchResult.jsp" />
+	</definition>
+	
+	
+	
+	<definition name="interoperabilityReportHomePage"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool | services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/interoperability/interoperabilityReportHomePage.jsp" />
+	</definition>
+	
+	<definition name="cjsreport"
+		extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool | services" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/interoperability/cjsreport.jsp" />
+	</definition>
+	
+	<!-- New Tiles Entry For Deadbody and Missing Recovery -->
+	
+	
+	<definition name="policeReport"
+		extends="list.definition">
+		<put-attribute name="title"
+			value="Monitoring Tool | Police Report" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/psReport/policeReport.jsp" />
+	</definition>
+	<!-- New Tiles Entry For Police Report  -->
+	
+	<definition name="deadbodyandmissingsearch" extends="app.definition">
+       <put-attribute name="title" value="Monitoring Tool" />
+       <put-attribute name="content" value="/WEB-INF/view/personsearch/deadbodyandmissingsearch.jsp" />
+    </definition>
+    
+    <definition name="deadbodyandmissingsearchresult" extends="app.definition">
+       <put-attribute name="title" value="Monitoring Tool" />
+       <put-attribute name="content" value="/WEB-INF/view/personsearch/deadbodyandmissingsearchresults.jsp" />
+    </definition>
+    
+     <definition name="getFilterList" template="/WEB-INF/view/personsearch/personSearchFilter.jsp">
+	</definition>
+	<definition name="getpersonfulldetails" template="/WEB-INF/view/personsearch/fullDetails.jsp">
+	</definition>
+    
+    <!-- tiles Entry for Parichay -->
+    <definition name="msgbeforeredirectingonparichay" template="/WEB-INF/view/parichay/msgbeforeredirectingonparichay.jsp">
+	</definition>
+
+<!-- /////MainFull BY NIMIT///////////// -->
+
+<definition name="fullSearch" extends="app.definition">
+		<put-attribute name="title" value="Monitoring Tool | National Search" />
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/FullSearch/mainpage.jsp" />
+	</definition>
+	
+<!-- /////MainFull BY NIMIT///////////// -->
+
+
+
+<!-- userdetaillog -->
+
+	<definition name="userUpdateHistory" extends="list.definition">
+		<put-attribute name="title" value="Monitoring Tool|UpdateHistory" />
+		<put-attribute name="content"
+			value="/WEB-INF/view/userUpdateHistory/userUpdateHistory.jsp" />
+	</definition>
+
+	<!-- ************************************************************* -->
+	<definition name="allServerTime" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/allServerTime.jsp" />
+	</definition>
+	<definition name="networkStatus" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/networkStatus.jsp" />
+	</definition>
+	<definition name="ntpCronStatus" extends="home.definition"> 
+	<put-attribute name="content" value="/WEB-INF/jsp/ntpCronStatus.jsp" />
+	</definition>
+	<definition name="ntptimeDelayStatus" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/ntptimeDelayStatus.jsp" />
+	</definition>
+	<definition name="diskSpaceStatus" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/diskSpaceStatus.jsp" />
+	</definition>
+	<definition name="memoryStatus" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/memoryStatus.jsp" />
+	</definition>
+	<definition name="cpuStatus" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/cpuStatus.jsp" />
+	</definition>
+	<definition name="offsetvalue" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/offsetvalue.jsp" />
+	</definition>
+	<definition name="appThreadStatus" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/appThreadStatus.jsp" />
+	</definition>
+	<definition name="dbThreadStatus" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/dbThreadStatus.jsp" />
+	</definition>
+	<definition name="cctnswebservices" extends="home.definition"> 
+		<put-attribute name="content" value="/WEB-INF/jsp/cctnswebservices.jsp" />
+	</definition>
+
+</tiles-definitions>  
+
+
+

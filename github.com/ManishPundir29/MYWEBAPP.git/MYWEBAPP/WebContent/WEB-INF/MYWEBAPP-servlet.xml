@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+http://www.springframework.org/schema/tx 
+http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+
+
+	<!-- <aop:aspectj-autoproxy />
+	<bean id="timelogger" class="in.nic.icjs.aspect.TimeLogger" /> -->
+	<mvc:annotation-driven enable-matrix-variables="true"></mvc:annotation-driven>
+
+<!-- Enable Annotation based Declarative Transaction Management -->
+	<tx:annotation-driven proxy-target-class="true" />
+
+	<!-- JSON Object Mapper -->
+	<bean id="objectMapper"
+		class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+		<property name="indentOutput" value="true" />
+		<property name="simpleDateFormat" value="yyyy-MM-dd" />
+		<property name="serializationInclusion" value="NON_NULL" />
+	</bean>
+
+
+	<!-- declaring base package -->
+	<context:component-scan base-package="com.mywebapp,mywebapp">
+		<!-- <context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect" /> -->
+	</context:component-scan>
+
+	
+
+
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass">
+			<value>
+				org.springframework.web.servlet.view.tiles3.TilesView
+			</value>
+		</property>
+	</bean>
+
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+
+<!-- sdd -->
+
+<!-- <bean id="transliterationProvider" class="com.cdac.gist.translit.TransliterationProvider" scope="singleton"></bean> -->
+	<!-- Multi Part View Resolver -->
+
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="1000000" />
+	</bean>
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	
+
+	<bean id="postgresDS" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+	<property name="url" value="jdbc:postgresql://localhost:5432/web_customer_tracker" />
+		<property name="username" value="postgres" />
+		<property name="password" value="root" />
+		<!-- <property name="defaultAutoCommit" value="false" /> -->
+		<property name="maxTotal" value="5" />
+		<property name="maxIdle" value="3" />
+		<property name="minIdle" value="3" />
+		<property name="maxWaitMillis" value="50" />
+		<property name="initialSize" value="3" />
+		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="numTestsPerEvictionRun" value="3" />
+		<property name="poolPreparedStatements" value="false" />
+		<property name="accessToUnderlyingConnectionAllowed" value="false" />
+		<property name="removeAbandonedOnBorrow" value="true" />
+	 </bean>
+
+
+	<!-- <bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+ -->
+	<!-- Creating TransactionManager Bean, since JDBC we are creating of type  "DataSourceTransactionManager" -->
+
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManagerForpostgresDS" >
+		<property name="dataSource" ref="postgresDS" />
+		<qualifier value="postgresDS" />
+	</bean>
+
+	<!-- bind your messages.properties -->
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+		<property name="basename" value="messages" />
+	</bean>
+
+	<!-- <mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<bean class="in.nic.icjs.interceptors.SecureInterceptor" />
+		</mvc:interceptor>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/*" />
+			<bean class="in.nic.icjs.interceptors.userinterceptor" />
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+ -->
+	 <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" scope="singleton" id="sessionFactory" >
+		<property name="dataSource" ref="postgresDS"></property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.mywebapp.model</value>
+			</list>
+		</property>
+	</bean> 
+
+<tx:annotation-driven transaction-manager="transactionManager" />
+
+ 	<bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" scope="singleton" id="transactionManager" >
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean> 
+	
+	
+</beans>
